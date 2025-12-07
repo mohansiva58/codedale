@@ -2,14 +2,28 @@
 
 import { useEffect, useRef, useState } from "react"
 import { cn } from "@/lib/utils"
+// Import SVG icons from Lucide-React (or any other source)
+// We will define them below for a self-contained example.
 import {
-    ImpactIcon,
-    DeliveryIcon,
-    PricingIcon,
-    ExpertIcon,
-    CollaborationIcon,
-    TalentIcon
-} from "@/components/custom-icons"
+    Zap, // For Impact-Driven
+    Clock, // For Fast & Reliable Delivery
+    Wallet, // For Transparent & Fair Pricing
+    Feather, // For Expert Problem Solvers
+    Users, // For Seamless Collaboration
+    Star, // For Direct Access to Top Talent
+} from "lucide-react"
+
+// --- SVG ICON Definitions (Replacements for custom-icons) ---
+
+// Defining the icons based on the imported Lucide components
+const ImpactIcon = (props: React.SVGProps<SVGSVGElement>) => <Zap {...props} />;
+const DeliveryIcon = (props: React.SVGProps<SVGSVGElement>) => <Clock {...props} />;
+const PricingIcon = (props: React.SVGProps<SVGSVGElement>) => <Wallet {...props} />;
+const ExpertIcon = (props: React.SVGProps<SVGSVGElement>) => <Feather {...props} />;
+const CollaborationIcon = (props: React.SVGProps<SVGSVGElement>) => <Users {...props} />;
+const TalentIcon = (props: React.SVGProps<SVGSVGElement>) => <Star {...props} />;
+
+// -------------------------------------------------------------
 
 const features = [
     {
@@ -62,7 +76,11 @@ export function WhyChooseUs() {
             observer.observe(sectionRef.current)
         }
 
-        return () => observer.disconnect()
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current)
+            }
+        }
     }, [])
 
     return (
@@ -123,7 +141,9 @@ function FeatureCard({
                 {/* Icons from the custom set are SVGs with 1080x1080 viewBox. 
               We need to size them appropriately. */}
                 <div className="w-24 h-24 flex items-center justify-center">
-                    <Icon className="w-full h-full" />
+                    {/* Using a larger stroke-width and color for visual appeal, 
+                        and setting fill="none" for line icons */}
+                    <Icon className="w-12 h-12 text-indigo-600 stroke-2" fill="none" />
                 </div>
             </div>
 
