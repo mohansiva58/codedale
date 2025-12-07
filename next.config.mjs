@@ -6,7 +6,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
- 
+  reactStrictMode: true,
+  turbopack: {
+    root: process.cwd(),
+  },
 }
 
 export default nextConfig
