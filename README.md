@@ -228,15 +228,4 @@ export const ShieldIcon = (props: React.SVGProps<SVGSVGElement>) => (
 - Bypasses frozen lockfile in CI to handle dependency mismatches
 - For strict lockfile enforcement, commit updated `pnpm-lock.yaml` and remove this config
 
-## 🚨 Common Issues & Solutions
 
-| Issue | Solution |
-|-------|----------|
-| **Port 3000 in use** | Next.js auto-selects next available port (3001, etc.) |
-| **Multiple lockfiles warning** | Set `turbopack.root` in `next.config.mjs` (already done) |
-| **CI lockfile mismatch** | Run `npx pnpm@10 install` and commit `pnpm-lock.yaml`, or use `vercel.json` override |
-| **TypeScript version warning** | Upgrade to 5.1+: `pnpm add -D typescript@latest` |
-| **Build scripts ignored** | Run `pnpm approve-builds` to allow sharp and Tailwind oxide builds |
-
-## 🔒 License
-Proprietary project. Do not redistribute.
